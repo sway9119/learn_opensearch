@@ -1,4 +1,4 @@
-.PHONY: up down ps shell logs build
+.PHONY: up down ps shell logs build build-no-cache prune
 
 # コンテナを起動
 up:
@@ -22,4 +22,13 @@ logs:
 
 # イメージをビルド
 build:
-	docker compose build 
+	docker compose build
+
+# キャッシュを使用せずにイメージをビルド
+build-no-cache:
+	docker compose build --no-cache
+
+# 全てのコンテナ、ボリューム、ネットワーク、未使用イメージを削除
+prune:
+	docker compose down --volumes --remove-orphans
+	docker system prune -af --volumes 
