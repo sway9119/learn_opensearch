@@ -1,4 +1,4 @@
-.PHONY: up down ps shell logs build build-no-cache prune
+.PHONY: up down ps shell logs build build-no-cache prune bundle-install
 
 # コンテナを起動
 up:
@@ -31,4 +31,8 @@ build-no-cache:
 # 全てのコンテナ、ボリューム、ネットワーク、未使用イメージを削除
 prune:
 	docker compose down --volumes --remove-orphans
-	docker system prune -af --volumes 
+	docker system prune -af --volumes
+
+# bundle installを実行
+bundle-install:
+	docker compose run web bundle install 
