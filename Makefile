@@ -14,7 +14,7 @@ ps:
 
 # コンテナのシェルに入る（appはサービス名なので、必要に応じて変更してください）
 shell:
-	docker compose exec app sh
+	docker compose exec web sh
 
 # コンテナのログを表示
 logs:
